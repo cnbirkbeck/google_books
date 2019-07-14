@@ -23,12 +23,8 @@ mongoose.connect(mongoURL, {useNewUrlParser: true})
     console.log(`Error connecting to mongoDB: ${err}`);
   });
   
+require("./routes/api-routes")(app);
 
-// Send every other request to the React app
-// Define any API routes before this runs
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
 
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
