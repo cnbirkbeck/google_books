@@ -11,10 +11,10 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Nav/>
-          <Header/>
+          <Nav />
+          <Header />
           <Switch>
-            <Route exact path ="/" component={Search}/>
+            <Route exact path="/" component={Search}/>
             <Route path="/saved" component={Saved}/>
           </Switch>
         </div>
@@ -24,5 +24,3 @@ class App extends Component {
 }
 
 export default App;
-
-
