@@ -1,28 +1,24 @@
-require('dotenv').config();
 const express = require("express");
+const mongoose = require ("mongoose");
+const routes= require ("./routes")
+
 const PORT = process.env.PORT || 3001;
 const app = express();
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-// Connect to mongoose DB
-const mongoose = require("mongoose");
-const mongoURL = process.env.MONGODB_URI || "mongodb://localhost/googlebooks"
-mongoose.connect(mongoURL, {useNewUrlParser: true})
-  .then(()=>{
-    console.log("🗄 ==> Successfully connected to mongoDB.");
-  })
-  .catch((err) => {
-    console.log(`Error connecting to mongoDB: ${err}`);
-  });
-  
-require("./routes/api-routes")(app);
+// Define API routes here
+app.use(routes)
+
+//Connet to mongoose
+mongoose.connect("mongodb://user1:pass34@ds233167.mlab.com:33167/heroku_74vrd0d5"|| "mongodb://localhost/googlebooks", {useNewUrlParser: true});
 
 
 app.listen(PORT, () => {
