@@ -4,7 +4,6 @@ import "./style.css";
 const Footer = () => (
 	<footer className = "page-footer">
 		<div className = "container-fluid text-center">
-			<p>React Google Book Search</p>
 			<p> C.Birkbeck 2019 </p>
 		</div>	
 	</footer>
